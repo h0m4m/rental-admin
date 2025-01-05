@@ -87,20 +87,6 @@ Ensure the following tables are set up in your Supabase project:
 | `email` | VARCHAR | User email                |
 | `...`   | Other   | Additional fields managed by Supabase |
 
-### `profiles`
-| Column      | Type     | Description                |
-|-------------|----------|----------------------------|
-| `id`        | UUID     | FK to `auth.users.id`      |
-| `business_id` | INT    | FK to `business.id`        |
-| `created_at` | TIMESTAMP | Auto-generated timestamp |
-
-### `business`
-| Column      | Type      | Description               |
-|-------------|-----------|---------------------------|
-| `id`        | INT       | Primary Key               |
-| `name`      | VARCHAR   | Business name             |
-| `password`  | TEXT      | Business password         |
-| `created_at` | TIMESTAMP | Auto-generated timestamp |
 
 ### `car`
 | Column        | Type      | Description            |
@@ -111,7 +97,6 @@ Ensure the following tables are set up in your Supabase project:
 | `year`        | INT       | Manufacturing year     |
 | `plate_numberr` | VARCHAR | License plate number   |
 | `plate_code`  | VARCHAR   | License plate code     |
-| `business`    | INT       | FK to `business.id`    |
 | `created_at`  | TIMESTAMP | Auto-generated timestamp |
 
 ### `contract`
@@ -123,7 +108,6 @@ Ensure the following tables are set up in your Supabase project:
 | `actual_out_date` | DATE    | Rental start date        |
 | `actual_out_time` | TIME    | Rental start time        |
 | `car`           | INT       | FK to `car.id`           |
-| `business`      | INT       | FK to `business.id`      |
 | `rent_charge`   | NUMERIC   | Rental charge            |
 | `fine_charge`   | NUMERIC   | Fine charge              |
 
@@ -175,7 +159,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ---
 
 ## Acknowledgments
-- [React-Admin](https://react-admin.com/)
+- [React-Admin](https://marmelab.com/react-admin/)
 - [Supabase](https://supabase.io/)
 - [Material-UI](https://mui.com/)
 
