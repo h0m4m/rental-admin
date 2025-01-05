@@ -1,6 +1,6 @@
 # Rental Admin
 
-Rental Admin is a multitenant React-admin application designed to manage rental businesses. It leverages Supabase as the backend service for authentication, data storage, and real-time database operations. The application is optimized for managing cars, contracts, and users, with customizable data views and forms.
+Rental Admin is a multitenant React-admin application designed for managing rental businesses. It leverages Supabase as the backend service for authentication, data storage, and real-time database operations. The application is optimized for managing cars, contracts, and users, with customizable data views and forms.
 
 ## Features
 
@@ -73,6 +73,59 @@ Serve the build locally:
 ```bash
 npm run preview
 ```
+
+---
+
+## Database Schema
+
+Ensure the following tables are set up in your Supabase project:
+
+### `auth.users`
+| Column  | Type    | Description               |
+|---------|---------|---------------------------|
+| `id`    | UUID    | Auto-generated user ID    |
+| `email` | VARCHAR | User email                |
+| `...`   | Other   | Additional fields managed by Supabase |
+
+### `profiles`
+| Column      | Type     | Description                |
+|-------------|----------|----------------------------|
+| `id`        | UUID     | FK to `auth.users.id`      |
+| `business_id` | INT    | FK to `business.id`        |
+| `created_at` | TIMESTAMP | Auto-generated timestamp |
+
+### `business`
+| Column      | Type      | Description               |
+|-------------|-----------|---------------------------|
+| `id`        | INT       | Primary Key               |
+| `name`      | VARCHAR   | Business name             |
+| `password`  | TEXT      | Business password         |
+| `created_at` | TIMESTAMP | Auto-generated timestamp |
+
+### `car`
+| Column        | Type      | Description            |
+|---------------|-----------|------------------------|
+| `id`          | INT       | Primary Key            |
+| `model`       | VARCHAR   | Car model              |
+| `make`        | VARCHAR   | Car make               |
+| `year`        | INT       | Manufacturing year     |
+| `plate_numberr` | VARCHAR | License plate number   |
+| `plate_code`  | VARCHAR   | License plate code     |
+| `business`    | INT       | FK to `business.id`    |
+| `created_at`  | TIMESTAMP | Auto-generated timestamp |
+
+### `contract`
+| Column          | Type      | Description              |
+|-----------------|-----------|--------------------------|
+| `id`            | INT       | Primary Key              |
+| `number`        | INT       | Contract number          |
+| `customer_name` | VARCHAR   | Customer name            |
+| `actual_out_date` | DATE    | Rental start date        |
+| `actual_out_time` | TIME    | Rental start time        |
+| `car`           | INT       | FK to `car.id`           |
+| `business`      | INT       | FK to `business.id`      |
+| `rent_charge`   | NUMERIC   | Rental charge            |
+| `fine_charge`   | NUMERIC   | Fine charge              |
 
 ---
 
